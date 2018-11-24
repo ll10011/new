@@ -78,7 +78,7 @@ HPDataType HeapTop(Heap* hp);//É¾³ý¶Ñ¶¥ÔªËØ
 void HeapInit(Heap*hp,int capacity)//³õÊ¼»¯
 {
 	assert(hp);
-	hp->_array = (HDataType*)ralloc(sizeof(HDataType)*capacity);
+	hp->_array = (HDataType*)malloc(sizeof(HDataType)*capacity);
 	hp->_capacity = capacity;
 	hp->_size = 0;
 }
@@ -131,10 +131,10 @@ void HeapInsert(Heap*hp, HDataType x)//Ìí¼Óx
 	hp->_array[i] = x;
 }
 
-HPDataType HeapTop(Heap* hp)//É¾³ý¶Ñ¶¥ÔªËØ
+HDataType HeapTop(Heap* hp)//É¾³ý¶Ñ¶¥ÔªËØ
 {
-	HPDataType temp = 0;
-	HPDataType x = 0;
+	HDataType temp = 0;
+	HDataType x = 0;
 	int i = 0;
 	int j = 0;
 	assert(hp);
@@ -168,11 +168,11 @@ int main()
 	{
 		HeapInsert(&p, a[i]);
 	}
-	while (!HPDataType(&p))
+	while (!HeapDestory(&p))
 	{
 		x = HeapTop(&p);
 		printf("%d", x);
-		if (!EmptyHeap(&p))
+		if (!HeapDestory(&p))
 			printf(".");
 	}
 	printf("\n");
